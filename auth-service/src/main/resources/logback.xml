@@ -4,14 +4,15 @@
     <!-- Define properties for log directories -->
     <property name="LOG_DIR" value="${PROJECT_PARENT_DIR}/logs" />
     <property name="BACKUP_DIR" value="${PROJECT_PARENT_DIR}/backup" />
+    <property name="appName" value="auth-service" />
 
     <!-- Rolling file appender with colors using ANSI codes -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_DIR}/auth-service.log</file>
+        <file>${LOG_DIR}/${appName}.log</file>
 
         <!-- Set up size and time-based rolling policy -->
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>${BACKUP_DIR}/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${BACKUP_DIR}/${appName}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>10MB</maxFileSize>
             <maxHistory>30</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
